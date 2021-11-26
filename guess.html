@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Guess Number Game</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            body{
+                text-align: center;
+                background-image: url("R.jpg") ;
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+            }
+
+            .container1{
+                text-align: center;
+                background-color: whitesmoke;
+                height:300px;
+                width:750px;
+                margin: 250px auto auto auto;
+                border-radius: 10px;       
+                box-shadow: 0px 2px 18px 0px rgb(0 0 0 / 30%);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container1">
+            <h2>Guess a number between 0 - 100</h2>
+            <p id="changetext"><b>Input a number below</b></p>
+            <input type="text" id="youtype"><button onclick="guess()">Submit</button>
+            <br>
+            <hr>
+            <p id="tryans1"></p>
+            <hr>
+            <p><b>Your answer was :</b></p>
+            <p id="guessans">?</p>
+            <hr>
+            <button onclick="nextpage()">Finish</button>
+        </div>
+    </body>
+    <script>
+        function guess(){
+            var min = 0;
+            var max = 100;
+            var answer = 54;
+            var guess = document.getElementById("youtype").value
+            if(guess>0 && guess<answer && guess<=100){
+                min = guess
+                document.getElementById("tryans1").innerHTML = "Guess a number between " + min+ "-"+max;
+                document.getElementById("guessans").innerHTML = "too low, try again :(";
+                document.getElementById("guessans").style.color="red";
+            }else if(guess == answer){
+                document.getElementById("guessans").innerHTML = "Congratulations! You got it correct! :)";
+                document.getElementById("guessans").style.color="green";
+            }else if(guess>answer && guess<=100){
+                max = guess
+                 document.getElementById("tryans1").innerHTML = "Guess a number between " + min+ "-"+max; 
+                document.getElementById("guessans").innerHTML = "too high, try again :(";
+                document.getElementById("guessans").style.color="red";
+            }else if(isNaN(guess)){
+                document.getElementById("guessans").innerHTML = "That is not a number, please try again :0";
+                document.getElementById("guessans").style.color="red";
+            }else if(guess<=0 || guess>100){
+                document.getElementById("guessans").innerHTML = "Invalid input, please try between 0-100 :(";
+                document.getElementById("guessans").style.color="red";
+            }
+        }
+              
+        function nextpage(){
+            window.location.href = "../Guess_Game/thankyou.html";
+        }
+        
+    </script>
+</html>
